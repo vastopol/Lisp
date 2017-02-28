@@ -1,0 +1,54 @@
+Lisp packages/sources
+=====================
+
+so far these have been on ubuntu
+
+-----------------------
+- Common Lisp
+    * sbcl
+    * gcl
+    * clisp
+    
+- Scheme
+    * gambit
+
+- extras/docs
+    * clisp-doc 
+    * clisp-dev 
+    * slime
+    * gcl-doc
+    * sbcl-doc 
+    * sbcl-source
+    * cl-asdf 
+    * cl-swank 
+    * common-lisp-controller 
+    * realpath
+    * darcs
+
+----------------------------
+
+* chicken
+
+Package chicken is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  libchicken6:i386 libchicken-dev:i386 chicken-bin:i386 libchicken6
+  libchicken-dev chicken-bin
+ 
+-----------------------------
+  
+* mit-scheme
+  
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ mit-scheme:i386 : Depends: libpq5:i386 but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
+
+-----------------------------
+
