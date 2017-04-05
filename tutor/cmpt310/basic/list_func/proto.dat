@@ -1,0 +1,30 @@
+Lists && Structura Recursion
+----------------------------
+
+Example: list length
+
+A given list L is created by either one of the two constructors, namely nil or a cons:
+Case 1: L is nil.
+    The length of an empty list is 0.
+Case 2: L is constructed by cons.
+    Then L is composed of two parts, namely, (first L) and (rest L). 
+    In such case, the length of L can be obtained inductively by adding 1 to the length of (rest L)
+
+;----------------------------------------------------------------------------------------------------
+
+Example: nth
+
+a function (nth N L) that returns the N'th member of list L (assuming that the elements are numbered from zero onwards):
+
+Given N and L, either L is nil or it is constructed by cons.
+Case 1: L is nil.
+    Accessing the N'th element is an undefined operation, and our implementation should arbitrarily return nil to indicate this.
+Case 2: L is constructed by a cons.
+    Then L has two components: (first L) and (rest L). There are two subcases: either N = 0 or N > 0:
+    Case 2.1: N = 0.
+        The zeroth element of L is simply (first L).
+    Case 2.2: N > 0.
+        The N'th member of L is exactly the (N-1)'th member of (rest L).
+
+;--------------------------------------------------------------------------------------------------------
+

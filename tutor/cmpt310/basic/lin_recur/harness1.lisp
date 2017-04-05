@@ -1,8 +1,6 @@
-;;; test harness
+;;; test harness for simple recursive functions
 
 (load "simple.lisp")
-
-#|
 
 ; test triangular
 (print "test triangular")
@@ -56,4 +54,3 @@
 (print (binomial 5 4))
 (print (binomial 5 5))
 
-|#

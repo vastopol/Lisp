@@ -1,8 +1,30 @@
-comments in lisp are ";"
-multiline comments go from "#|" to "|#"
+COMMON LISP
+-----------
 
 from the repl to load a file
 (load "file.lisp")
+
+use "trace" debugging tool to follow function execution
+
+use "dribble" to capture the output of a trace to a file
+
+comments
+Introductory comments are preceded by ";;;"
+Function headers are preceded by ";;"
+Inline comments are introduced by ";"
+Multi-line comments go from "#|" to "|#"
+
+
+Numeric Functions	
+(+ x1 x2 ... xn)	The sum of x1, x2, ..., xn
+(* x1 x2 ... xn)	The product of x1, x2, ..., xn
+(- x y)	            Subtract y from x
+(/ x y)	            Divide x by y
+(rem x y)	        The remainder of dividing x by y
+(abs x)	            The absolute value of x
+(max x1 x2 ... xn)	The maximum of x1, x2, ..., xn
+(min x1 x2 ... xn)	The minimum of x1, x2, ..., xn
+
 
 Relational Operators
 (= x y)	    x is equal to y
@@ -11,6 +33,7 @@ Relational Operators
 (> x y)	    x is greater than y
 (<= x y)	x is no greater than y
 (>= x y)	x is no less than y
+
 
 Shorthand	
 (1+ x)	    (+ x 1)
@@ -21,8 +44,43 @@ Shorthand
 (evenp x)	(= (rem x 2) 0)
 (oddp x)	(/= (rem x 2) 0)
 
+
 Logical Operators	
 (or x1 x2 ... xn)	Logical or
 (and x1 x2 ... xn)	Logical and
 (not x)	            Logical negation
+
+;---------------------------------------
+
+LISTS
+
+List is also a recursive data structure, present the data type in terms of its constructors, selectors and recognizers.
+
+
+Constructors are forms that create new instances of a data type (possibly out of some simpler components). A list is obtained by evaluating one of the following constructors:
+
+nil: Evaluating nil creates an empty list;
+(cons x L): Given a LISP object x and a list L, evaluating (cons x L) creates a list containing x followed by the elements in L.
+
+
+The second ingredient of an abstract data type are its selectors. Given a composite object constructed out of several components, a selector form returns one of its components. 
+Specifically, suppose a list L1 is constructed by evaluating (cons x L2), where x is a LISP object and L2 is a list. 
+Then, the selector forms (first L1) and (rest L1) evaluate to x and L2 respectively
+
+
+Finally, we look at recognizers, expressions that test how an object is constructed. Corresponding to each constructor of a data type is a recognizer. 
+In the case of list, they are null for nil and consp for cons. Given a list L, (null L) returns t iff L is nil, and (consp L) returns t iff L is constructed from cons.
+Notice that, since lists have only two constructors, the recognizers are complementary. Therefore, we usually need only one of them. In our following discussion, we use only null.
+
+list-length  == counts the number of elements in a list
+
+
+STRUCTURAL RECURSION
+The kind of recursion we see here is called structural recursion. Its standard pattern is as follows. To process an instance X of a recursive data type:
+
+1. Use the recognizers to determine how X is created (i.e. which constructor creates it).
+2. For instances that are atomic (i.e. those created by constructors with no components), return a trivial value. 
+3. If the instance is composite, then use the selectors to extract its components. 
+4. Following that, we apply recursion on one or more components of X.
+5. Finally, we use either the constructors or some other functions to combine the result of the recursive calls, yielding the value of the function. 
 
