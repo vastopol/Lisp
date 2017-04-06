@@ -28,3 +28,45 @@ Case 2: L is constructed by a cons.
 
 ;--------------------------------------------------------------------------------------------------------
 
+example: member
+
+The correctness of the above implementation is easy to justify. The list L is either constructed by nil or by a call to cons:
+
+    Case 1: L is nil.
+    L is empty, and there is no way E is in L.
+    Case 2: L is constructed by cons
+    Then it has two components: (first L) and (rest L). There are two cases, either (first L) is E itself, or it is not.
+        Case 2.1: E equals (first L).
+        This means that E is a member of L,
+        Case 2.2: E does not equal (first L).
+        Then E is a member of L iff E is a member of (rest L). 
+
+;-----------------------------------------------------
+
+example: append
+
+We implement a recursive version of append. Suppose we are given two lists L1 and L2. L1 is either nil or constructed by cons.
+
+    Case 1: L1 is nil.
+    Appending L2 to L1 simply results in L2.
+    Case 2: L1 is composed of two parts: (first L1) and (rest L1). If we know the result of appending L2 to (rest L1), then we can take this result, insert (first L1) to the front, and we then have the list we want. 
+
+;----------------------------------------------------------
+
+
+example: intersection of sets
+
+The correctness of the implementation is easy to see. L1 is either an empty set (nil) or it is not:
+
+    Case 1: L1 is an empty set.
+    Then its interection with L2 is obviously empty.
+    Case 2: L1 is not empty.
+    L1 has both a first component and a rest component. There are two cases: either (first L1) is a member of L2 or it is not.
+        Case 2.1: (first L1) is a member of L2.
+        (first L1) belongs to both L1 and L2, and thus belong to their intersection. Therefore, the intersection of L1 and L2 is simply (first L1) plus the intersection of (rest L1) and L2.
+        Case 2.2: (first L1) is not a member of L2.
+        Since (first L1) does not belong to L2, it does not belong to the intersection of L1 and L2. As a result, the intersection of L1 and L2 is exactly the intersection of (rest L1) and L2. 
+
+;-------------------------------------------------
+
+Exercise: Give a linearly recursive implementation of union and difference. 

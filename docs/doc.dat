@@ -50,6 +50,13 @@ Logical Operators
 (and x1 x2 ... xn)	Logical and
 (not x)	            Logical negation
 
+Equality Prediacates
+(= x y) 		True if x and y evaluate to the same number.
+(eq x y) 		True if x and y evaluate to the same symbol.
+(eql x y) 		True if x and y are either = or eq.
+(equal x y) 	True if x and y are eql or if they evaluate to the same list.
+(equalp x y) 	To be discussed in Tutorial 4.
+
 ;---------------------------------------
 
 LISTS
@@ -84,3 +91,25 @@ The kind of recursion we see here is called structural recursion. Its standard p
 4. Following that, we apply recursion on one or more components of X.
 5. Finally, we use either the constructors or some other functions to combine the result of the recursive calls, yielding the value of the function. 
 
+
+LISP defines a function (nth N L) that returns the N'th member of list L (assuming that the elements are numbered from zero onwards): 
+
+LISP has a built-in function (last L) that returns a the last cons structure in a given list L. 
+
+LISP defines a function (member E L) that returns non-NIL if E is a member of L. 
+
+LISP defines a function append that appends one list by another: 
+
+LISP defines a function (butlast L) that returns a list containing the same elements in L except for the last one.
+
+
+lists as sets
+
+Formally, lists are ordered sequences. They differ with sets in two ways:
+
+1    Sets are unordered, but lists are. (a b c) and (c b a) are two different lists.
+2    An element either belong to a set or it does not. There is no notion of multiple occurrences. Yet, a list may contain multiple occurrences of the same element. (a b b c) and (a b c) are two different lists. 
+
+However, one may use lists to approximate sets, although the performance of such implementation is not the greatest. 
+
+LISP also defines functions like (intersection L1 L2), (union L1 L2) and (difference L1 L2) for boolean operations on sets.
